@@ -47,9 +47,14 @@ class LicenseClient {
   }
 
   exit() {
-    logger.error("Press Enter to exit...")
+    /*logger.error("Press Enter to exit...")
     const promise = new Promise((resolve, reject) => {
       process.openStdin().addListener("data", (data) => resolve(process.exit(2))) 
+    })
+    return promise*/
+    
+    const promise = new Promise((resolve, reject) => {
+      resolve(process.exit(2))
     })
     return promise
   }
