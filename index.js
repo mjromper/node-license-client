@@ -54,7 +54,8 @@ class LicenseClient {
     return promise*/
     
     const promise = new Promise((resolve, reject) => {
-      resolve(process.exit(2))
+      //resolve(process.exit(2))
+      reject();
     })
     return promise
   }
