@@ -123,7 +123,7 @@ class LicenseClient {
     logger.debug(license)
     if (license.key === licenseKey && license.machine === machineId && license.identity === this.identity) {
       if (license.meta.persist || (license.meta.startDate < Date.now() && license.meta.endDate > Date.now())) {
-        return { meta: license.meta, status: true }
+        return { meta: license.meta, status: true, key: license.key }
       } else throw Error('invalid effect date of license')
     } else throw Error('invalid license')
   }
