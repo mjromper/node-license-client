@@ -77,8 +77,10 @@ class LicenseClient {
 
     if (!result.status) await this.exit()
    
-    logger.info('License is valid...')
-    if (result.meta.persist) return
+    logger.info('License is valid...');
+    
+    if (result.meta.persist) return result;
+    
     logger.info(`License expiration date is ${new Date(result.meta.endDate)}`)
     const _postCheck = ()=> {
       if (Date.now() > result.meta.endDate) {
@@ -88,6 +90,8 @@ class LicenseClient {
       logger.info('licensing post check tick with success')
     }
     setInterval(_postCheck, 24*60*60*1000) // daily post check
+    
+    return result;
   }
 
   async _checkLicense() {
